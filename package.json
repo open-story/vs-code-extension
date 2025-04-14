@@ -11,7 +11,7 @@
   ],
   "scripts": {
     "build": "node ./scripts/build.js",
-    "test": "node ./scripts/test.js",
+    "test": "vitest",
     "watch": "npm run build && chokidar './syntaxes/**/*.yaml' -c 'npm run build'"
   },
   "contributes": {
@@ -38,7 +38,11 @@
     ]
   },
   "devDependencies": {
+    "@types/node": "^22.14.1",
+    "chokidar-cli": "^3.0.0",
     "js-yaml": "^4.1.0",
-    "chokidar-cli": "^3.0.0"
+    "vitest": "^3.1.1",
+    "vscode-oniguruma": "^2.0.1",
+    "vscode-textmate": "^9.2.0"
   }
 }

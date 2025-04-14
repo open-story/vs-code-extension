@@ -4,9 +4,6 @@
 	"scopeName": "source.osf",
 	"patterns": [
 		{
-			"include": "#comments"
-		},
-		{
 			"include": "#header"
 		},
 		{
