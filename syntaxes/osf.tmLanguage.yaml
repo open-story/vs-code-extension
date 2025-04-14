@@ -71,9 +71,43 @@ repository:
             name: variable.other.property.osf
 
   text_block:
-    patterns:
-      - name: string.unquoted.block.osf
-        match: ^\s{4,}.+
+    # This whole block defines the multi-line indented text
+    name: string.unquoted.block.osf # Base scope for the block content
+    # Begin matching on the first line that has the block indentation (e.g., 4+ spaces)
+    # Use positive lookbehind to ensure the PREVIOUS line ended with 'text:'
+    # NOTE: Lookbehind is complex and not universally supported/performant in all TextMate engines.
+    # Let's try a simpler approach first without lookbehind, relying on pattern order.
+    # Begin on a line that starts with the required block indentation
+    begin: '^(?=(\s{4,}))' # Positive lookahead captures the indentation pattern (Group 1) but doesn't consume text
+    # End *before* a line that does NOT have the same indentation level (or EOF)
+    # We need to match the indentation captured in 'begin' (tricky!)
+    # Easier end: End *before* a line that doesn't start with 4+ spaces
+    end: '^(?!\s{4,})' # Negative lookahead: End if the line doesn't start with 4+ spaces
+    # --- Alternative/Simpler End: Might be less precise if blank lines allowed ---
+    # end: '^(?=\s*$|\S)' # End on an empty line or a line starting with non-space
+
+    patterns: # Patterns to apply line-by-line *within* this begin/end block
+      - include: '#interpolated_variable' # <<< Apply variable rule inside the block
+
+  # Rule for interpolated variables like $Variable.Path.SubPath
+  interpolated_variable:
+    # Apply this scope to the entire matched variable expression
+    name: meta.variable.interpolation.osf
+    # Regex Breakdown:
+    #  (\$)                         -> Group 1: The '$' symbol
+    #  ([a-zA-Z_][a-zA-Z0-9_]*)      -> Group 2: The first identifier (e.g., DarinaLautner)
+    #  (                           -> Group 3: Repeating group for subsequent parts
+    #    (\.)                      -> Group 4: The dot separator
+    #    ([a-zA-Z_][a-zA-Z0-9_]*)   -> Group 5: The subsequent identifier (e.g., meta, fullName...)
+    #  )*                          -> Group 3 repeated zero or more times
+    match: '(\$)([a-zA-Z_][a-zA-Z0-9_]*)((?:\.)([a-zA-Z_][a-zA-Z0-9_]*))*'
+    captures:
+      # Capture Group 1: The '$' sign
+      '1': { name: entity.name.type.class.osf }
+      '2': { name: entity.name.type.class.osf }           # <<< Style DarinaLautner as class/type
+      '3': { name: variable.other.property.osf }   # <<< Style the '.' separator
+      '4': { name: variable.other.property.osf }  
+
   strings:
     name: string.quoted.double.osf
     begin: '"'

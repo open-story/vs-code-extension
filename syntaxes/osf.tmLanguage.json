@@ -117,12 +117,32 @@
 			]
 		},
 		"text_block": {
+			"name": "string.unquoted.block.osf",
+			"begin": "^(?=(\\s{4,}))",
+			"end": "^(?!\\s{4,})",
 			"patterns": [
 				{
-					"name": "string.unquoted.block.osf",
-					"match": "^\\s{4,}.+"
+					"include": "#interpolated_variable"
 				}
 			]
+		},
+		"interpolated_variable": {
+			"name": "meta.variable.interpolation.osf",
+			"match": "(\\$)([a-zA-Z_][a-zA-Z0-9_]*)((?:\\.)([a-zA-Z_][a-zA-Z0-9_]*))*",
+			"captures": {
+				"1": {
+					"name": "entity.name.type.class.osf"
+				},
+				"2": {
+					"name": "entity.name.type.class.osf"
+				},
+				"3": {
+					"name": "variable.other.property.osf"
+				},
+				"4": {
+					"name": "variable.other.property.osf"
+				}
+			}
 		},
 		"strings": {
 			"name": "string.quoted.double.osf",
