@@ -1,0 +1,251 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`OSF Grammar Snapshot Tests > Should snapshot apiVersion header 1`] = `
+[
+  {
+    "scopes": [
+      "source.osf",
+      "meta.header.osf",
+      "entity.name.tag.osf",
+    ],
+    "text": "apiVersion",
+  },
+  {
+    "scopes": [
+      "source.osf",
+      "meta.header.osf",
+    ],
+    "text": ": ",
+  },
+  {
+    "scopes": [
+      "source.osf",
+      "meta.header.osf",
+      "string.unquoted.value.osf",
+    ],
+    "text": "dialogue/v1",
+  },
+]
+`;
+
+exports[`OSF Grammar Snapshot Tests > Should snapshot double-quoted string property 1`] = `
+[
+  {
+    "scopes": [
+      "source.osf",
+      "meta.header.osf",
+    ],
+    "text": "  ",
+  },
+  {
+    "scopes": [
+      "source.osf",
+      "meta.header.osf",
+      "entity.name.tag.osf",
+    ],
+    "text": "message",
+  },
+  {
+    "scopes": [
+      "source.osf",
+      "meta.header.osf",
+    ],
+    "text": ": ",
+  },
+  {
+    "scopes": [
+      "source.osf",
+      "meta.header.osf",
+      "string.unquoted.value.osf",
+    ],
+    "text": ""Hello World!"",
+  },
+]
+`;
+
+exports[`OSF Grammar Snapshot Tests > Should snapshot indented text block 1`] = `
+[
+  {
+    "scopes": [
+      "source.osf",
+      "string.unquoted.block.osf",
+    ],
+    "text": "        warm glow over the battlefield. The air was thick ",
+  },
+]
+`;
+
+exports[`OSF Grammar Snapshot Tests > Should snapshot line with trailing whitespace 1`] = `
+[
+  {
+    "scopes": [
+      "source.osf",
+      "meta.header.osf",
+    ],
+    "text": "  ",
+  },
+  {
+    "scopes": [
+      "source.osf",
+      "meta.header.osf",
+      "entity.name.tag.osf",
+    ],
+    "text": "prop",
+  },
+  {
+    "scopes": [
+      "source.osf",
+      "meta.header.osf",
+    ],
+    "text": ": ",
+  },
+  {
+    "scopes": [
+      "source.osf",
+      "meta.header.osf",
+      "string.unquoted.value.osf",
+    ],
+    "text": "value  ",
+  },
+]
+`;
+
+exports[`OSF Grammar Snapshot Tests > Should snapshot node declaration 1`] = `
+[
+  {
+    "scopes": [
+      "source.osf",
+      "meta.node.declaration.osf",
+      "keyword.control.osf",
+    ],
+    "text": "node",
+  },
+  {
+    "scopes": [
+      "source.osf",
+      "meta.node.declaration.osf",
+    ],
+    "text": " ",
+  },
+  {
+    "scopes": [
+      "source.osf",
+      "meta.node.declaration.osf",
+      "entity.name.function.osf",
+    ],
+    "text": "node_1",
+  },
+  {
+    "scopes": [
+      "source.osf",
+      "meta.node.declaration.osf",
+    ],
+    "text": ":",
+  },
+]
+`;
+
+exports[`OSF Grammar Snapshot Tests > Should snapshot node property (key only - text) 1`] = `
+[
+  {
+    "scopes": [
+      "source.osf",
+      "meta.header.osf",
+    ],
+    "text": "  ",
+  },
+  {
+    "scopes": [
+      "source.osf",
+      "meta.header.osf",
+      "entity.name.tag.osf",
+    ],
+    "text": "text",
+  },
+  {
+    "scopes": [
+      "source.osf",
+      "meta.header.osf",
+    ],
+    "text": ":",
+  },
+  {
+    "scopes": [
+      "source.osf",
+      "meta.header.osf",
+      "string.unquoted.value.osf",
+    ],
+    "text": " ",
+  },
+]
+`;
+
+exports[`OSF Grammar Snapshot Tests > Should snapshot node property (key/value) 1`] = `
+[
+  {
+    "scopes": [
+      "source.osf",
+      "meta.header.osf",
+    ],
+    "text": "  ",
+  },
+  {
+    "scopes": [
+      "source.osf",
+      "meta.header.osf",
+      "entity.name.tag.osf",
+    ],
+    "text": "character",
+  },
+  {
+    "scopes": [
+      "source.osf",
+      "meta.header.osf",
+    ],
+    "text": ": ",
+  },
+  {
+    "scopes": [
+      "source.osf",
+      "meta.header.osf",
+      "string.unquoted.value.osf",
+    ],
+    "text": "none",
+  },
+]
+`;
+
+exports[`OSF Grammar Snapshot Tests > Should snapshot string with escape sequence 1`] = `
+[
+  {
+    "scopes": [
+      "source.osf",
+      "meta.header.osf",
+    ],
+    "text": "  ",
+  },
+  {
+    "scopes": [
+      "source.osf",
+      "meta.header.osf",
+      "entity.name.tag.osf",
+    ],
+    "text": "escaped",
+  },
+  {
+    "scopes": [
+      "source.osf",
+      "meta.header.osf",
+    ],
+    "text": ": ",
+  },
+  {
+    "scopes": [
+      "source.osf",
+      "meta.header.osf",
+      "string.unquoted.value.osf",
+    ],
+    "text": ""Say \\"Hi!\\""",
+  },
+]
+`;
