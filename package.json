@@ -9,6 +9,11 @@
   "categories": [
     "Programming Languages"
   ],
+  "scripts": {
+    "build": "node ./scripts/build.js",
+    "test": "node ./scripts/test.js",
+    "watch": "npm run build && chokidar './syntaxes/**/*.yaml' -c 'npm run build'"
+  },
   "contributes": {
     "languages": [
       {
@@ -31,5 +36,9 @@
         "path": "./syntaxes/osf.tmLanguage.json"
       }
     ]
+  },
+  "devDependencies": {
+    "js-yaml": "^4.1.0",
+    "chokidar-cli": "^3.0.0"
   }
 }
