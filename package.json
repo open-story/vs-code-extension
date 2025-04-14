@@ -1,0 +1,35 @@
+{
+  "name": "osf-language",
+  "displayName": "OSF Language",
+  "description": "Syntax high lightning for OSF (Open Story Foundation Lnaguage",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.99.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "osf",
+        "aliases": [
+          "Open Story File",
+          "OSF",
+          "osf"
+        ],
+        "extensions": [
+          ".osf"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "osf",
+        "scopeName": "source.osf",
+        "path": "./syntaxes/osf.tmLanguage.json"
+      }
+    ]
+  }
+}
