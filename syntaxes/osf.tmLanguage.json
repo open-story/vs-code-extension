@@ -4,16 +4,16 @@
 	"scopeName": "source.osf",
 	"patterns": [
 		{
-			"include": "#header"
+			"include": "#node_properties"
+		},
+		{
+			"include": "#text_block"
 		},
 		{
 			"include": "#node_declaration"
 		},
 		{
-			"include": "#node_properties"
-		},
-		{
-			"include": "#text_block"
+			"include": "#header"
 		},
 		{
 			"include": "#strings"
@@ -64,13 +64,53 @@
 			"patterns": [
 				{
 					"name": "meta.property.osf",
-					"match": "^(\\s+)([a-zA-Z_][a-zA-Z0-9_]*):\\s*(.*)\\s*$",
+					"match": "^(\\s+)([a-zA-Z_][a-zA-Z0-9_]*):[ \\t]*(.*?)?[ \\t]*$",
 					"captures": {
+						"1": {
+							"name": "punctuation.whitespace.leading.osf"
+						},
 						"2": {
 							"name": "entity.name.tag.osf"
 						},
 						"3": {
-							"name": "string.unquoted.value.osf"
+							"name": "meta.property.value.osf",
+							"patterns": [
+								{
+									"name": "meta.variable-access.osf",
+									"match": "([a-zA-Z_][a-zA-Z0-9_]*)\\.([a-zA-Z_][a-zA-Z0-9_]*)",
+									"captures": {
+										"1": {
+											"name": "entity.name.type.class.osf"
+										},
+										"2": {
+											"name": "variable.other.constant.property.osf"
+										}
+									}
+								},
+								{
+									"include": "#strings"
+								},
+								{
+									"name": "string.unquoted.value.osf",
+									"match": ".+"
+								}
+							]
+						}
+					}
+				}
+			]
+		},
+		"property_variable_access": {
+			"patterns": [
+				{
+					"name": "meta.header.osf",
+					"match": "([a-zA-Z_][a-zA-Z0-9_]*)\\.([a-zA-Z_][a-zA-Z0-9_]*)",
+					"captures": {
+						"1": {
+							"name": "variable.other.object.osf"
+						},
+						"2": {
+							"name": "variable.other.property.osf"
 						}
 					}
 				}
